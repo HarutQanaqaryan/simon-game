@@ -65,13 +65,20 @@
         ></div>
       </div>
     </div>
-    <div v-if="lost">Lost</div>
+    <div class="lost-modal" v-if="lost">
+      <p>Проиграли :(</p>
+      <span class="lost-btn" @click="lost = !lost">Начать заново</span>
+    </div>
   </div>
 </template>
 
 <script>
 import { clickedBlocks } from "../helpers/blocks";
+import stepSound from "../assets/step.wav";
+import lostSound from "../assets/lost.wav"
 
+let stepsAudio = new Audio(stepSound);
+let lostAudio = new Audio(lostSound);
 export default {
   data() {
     return {
@@ -88,13 +95,15 @@ export default {
       lost: false,
       intervalFn: null,
       complexity: 1500,
-      randomId: null
+      randomId: null,
     }
   },
   methods: {
     handleClick({ target: { id } }) {
       this.playerSteps.push(id)
       this.checkingStepBlock(id)
+      stepsAudio.play()
+      this.checkWin()
       this.checkLost()
     },
     playGame() {
@@ -105,38 +114,38 @@ export default {
         clearInterval(this.intervalFn)
       }
       this.checkingStepBlock(this.randomId)
+      stepsAudio.play()
     },
     startGame() {
       this.spareCount = this.count
       this.intervalFn = setInterval(this.playGame, this.complexity)
     },
     checkingStepBlock(id) {
-      this.checkWin()
       switch (id) {
         case "1":
           this.isRed = !this.isRed
           setTimeout(() => {
             this.isRed = !this.isRed
-          }, 100)
+          }, 200)
           break;
         case "2":
           this.isYellow = !this.isYellow
           setTimeout(() => {
             this.isYellow = !this.isYellow
-          }, 100)
+          }, 200)
 
           break;
         case "3":
           this.isBlue = !this.isBlue
           setTimeout(() => {
             this.isBlue = !this.isBlue
-          }, 100)
+          }, 200)
           break;
         case "4":
           this.isGreen = !this.isGreen
           setTimeout(() => {
             this.isGreen = !this.isGreen
-          }, 100)
+          }, 200)
 
           break;
         default:
@@ -148,10 +157,25 @@ export default {
         this.count = this.count + 1;
         this.spareCount = this.count;
         this.startGame()
+      } else {
+        return false
+      }
+      if (this.compSteps.length === this.playerSteps.length) {
+        this.playerSteps = [];
+        this.compSteps = [];
+      }
+    },
+    checkLost() {
+      if (this.compSteps.length === this.playerSteps.length && this.compSteps.join("") !== this.playerSteps.join("")) {
+        this.lost = !this.lost
+        this.count = 1;
+        this.spareCount = this.count
+        this.playerSteps = [];
+        this.compSteps = [];
+        lostAudio.play()
       }
     }
-  },
-
+  }
 }
 </script>
 

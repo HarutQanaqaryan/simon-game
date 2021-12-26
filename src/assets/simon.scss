@@ -167,3 +167,26 @@ body {
 .clicked-right-bottom {
     background-color: rgba(0, 128, 0, 0.306);
 }
+
+.lost-modal {
+  width: 250px;
+  height: 250px;
+  background-color: rgb(181, 33, 33);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 30px;
+  color: white;
+  font-family: $other_fonts;
+  position: fixed;
+}
+.lost-btn {
+    font-size: 15px;
+    background-color: yellow;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
