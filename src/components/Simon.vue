@@ -181,6 +181,7 @@ export default {
         this.spareCount = this.count
         this.playerSteps = [];
         this.compSteps = [];
+        clearInterval(intervalFn)
       }
     }
   }
