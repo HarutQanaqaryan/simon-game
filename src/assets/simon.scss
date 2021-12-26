@@ -1,0 +1,144 @@
+@import "variables.scss";
+
+body {
+  background-color: rgb(244, 245, 248);
+}
+.simon-wrapper {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.simon-title {
+  margin-top: 25px;
+  margin-bottom: 5px;
+  font-size: 55px;
+  color: black;
+  border-bottom: 1px solid black;
+  font-family: $main_font_family;
+}
+.simon-levels {
+  display: flex;
+  justify-content: center;
+}
+.simon-level_btn {
+  width: 30px;
+  height: 30px;
+  background-color: $background_color;
+  color: $font_color;
+  border: none;
+  border-radius: 100%;
+  box-shadow: $box_shadow;
+}
+.simon-level-title {
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  margin: 3px;
+  font-family: $other_fonts;
+}
+.simon-steps {
+  color: rgb(224, 224, 224);
+  font-size: 30px;
+  background-color: red;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  border-radius: 100%;
+  font-family: $other_fonts;
+  box-shadow: $box_shadow;
+}
+.simon-start {
+  background-color: blue;
+  color: white;
+  height: 50px;
+  width: 50px;
+  font-size: 14px;
+  font-family: $other_fonts;
+  border-radius: 100%;
+  margin-right: 10px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $box_shadow;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+}
+.simon-start-points {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.simon-game {
+  position: relative;
+  margin: 20px;
+  width: 600px;
+  height: 600px;
+  background-color: black;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $box_shadow;
+}
+.simon-center {
+  background-color: black;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.simon-center_min {
+  background-color: rgba(255, 255, 255, 0.877);
+  width: 260px;
+  height: 260px;
+  border-radius: 100%;
+}
+.simon-left-side {
+  display: inline-block;
+  margin-right: 10px;
+}
+.simon-left-top {
+  width: 250px;
+  height: 250px;
+  background-color: red;
+  border-top-left-radius: 250px;
+  margin-bottom: 10px;
+  box-shadow: $box_shadow;
+}
+.simon-left-bottom {
+  width: 250px;
+  height: 250px;
+  background-color: yellow;
+  border-bottom-left-radius: 250px;
+  margin-top: 10px;
+  box-shadow: $box_shadow;
+}
+.simon-right-side {
+  display: inline-block;
+}
+.simon-right-top {
+  width: 250px;
+  height: 250px;
+  background-color: blue;
+  border-top-right-radius: 250px;
+  margin-bottom: 10px;
+  box-shadow: $box_shadow;
+}
+.simon-right-bottom {
+  width: 250px;
+  height: 250px;
+  background-color: green;
+  border-bottom-right-radius: 250px;
+  margin-top: 10px;
+  box-shadow: $box_shadow;
+}
