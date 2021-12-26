@@ -27,11 +27,15 @@ body {
 .simon-level_btn {
   width: 30px;
   height: 30px;
-  background-color: $background_color;
+  background-color: $btn_color;
   color: $font_color;
   border: none;
   border-radius: 100%;
   box-shadow: $box_shadow;
+  cursor: pointer;
+}
+.clicked-level-btn {
+    background-color: red;
 }
 .simon-level-title {
   color: rgb(0, 0, 0);
@@ -69,6 +73,7 @@ body {
   box-shadow: $box_shadow;
   color: rgb(255, 255, 255);
   font-size: 14px;
+  cursor: pointer;
 }
 .simon-start-points {
   display: flex;
@@ -114,6 +119,7 @@ body {
   border-top-left-radius: 250px;
   margin-bottom: 10px;
   box-shadow: $box_shadow;
+  cursor: pointer;
 }
 .simon-left-bottom {
   width: 250px;
@@ -122,6 +128,7 @@ body {
   border-bottom-left-radius: 250px;
   margin-top: 10px;
   box-shadow: $box_shadow;
+  cursor: pointer;
 }
 .simon-right-side {
   display: inline-block;
@@ -133,6 +140,7 @@ body {
   border-top-right-radius: 250px;
   margin-bottom: 10px;
   box-shadow: $box_shadow;
+  cursor: pointer;
 }
 .simon-right-bottom {
   width: 250px;
@@ -141,4 +149,21 @@ body {
   border-bottom-right-radius: 250px;
   margin-top: 10px;
   box-shadow: $box_shadow;
+  cursor: pointer;
+}
+.clicked-style {
+  box-shadow: $clicked-box-shadow;
+}
+
+.clicked-left-top {
+    background-color: rgba(255, 0, 0, 0.306);
+}
+.clicked-left-bottom {
+    background-color: rgba(255, 255, 0, 0.306);
+}
+.clicked-right-top {
+    background-color: rgba(0, 0, 255, 0.306);
+}
+.clicked-right-bottom {
+    background-color: rgba(0, 128, 0, 0.306);
 }
