@@ -79,6 +79,8 @@ import lostSound from "../assets/lost.wav"
 
 let stepsAudio = new Audio(stepSound);
 let lostAudio = new Audio(lostSound);
+let intervalFn = null;
+
 export default {
   data() {
     return {
@@ -91,9 +93,7 @@ export default {
       isGreen: clickedBlocks[3].isClicked,
       count: 1,
       spareCount: 0,
-      win: false,
       lost: false,
-      intervalFn: null,
       complexity: 1500,
       randomId: null,
     }
@@ -111,14 +111,16 @@ export default {
       this.compSteps.push(this.randomId)
       this.spareCount = this.spareCount - 1
       if (this.spareCount <= 0) {
-        clearInterval(this.intervalFn)
+        clearInterval(intervalFn)
       }
       this.checkingStepBlock(this.randomId)
       stepsAudio.play()
     },
     startGame() {
       this.spareCount = this.count
-      this.intervalFn = setInterval(this.playGame, this.complexity)
+      this.playerSteps = [];
+      this.compSteps = [];
+      intervalFn = setInterval(this.playGame, this.complexity)
     },
     checkingStepBlock(id) {
       switch (id) {
@@ -126,26 +128,26 @@ export default {
           this.isRed = !this.isRed
           setTimeout(() => {
             this.isRed = !this.isRed
-          }, 200)
+          }, 250)
           break;
         case "2":
           this.isYellow = !this.isYellow
           setTimeout(() => {
             this.isYellow = !this.isYellow
-          }, 200)
+          }, 250)
 
           break;
         case "3":
           this.isBlue = !this.isBlue
           setTimeout(() => {
             this.isBlue = !this.isBlue
-          }, 200)
+          }, 250)
           break;
         case "4":
           this.isGreen = !this.isGreen
           setTimeout(() => {
             this.isGreen = !this.isGreen
-          }, 200)
+          }, 250)
 
           break;
         default:
@@ -168,14 +170,21 @@ export default {
     checkLost() {
       if (this.compSteps.length === this.playerSteps.length && this.compSteps.join("") !== this.playerSteps.join("")) {
         this.lost = !this.lost
+        lostAudio.play()
+      }
+      if (this.playerSteps.length > this.compSteps.length) {
+        this.lost = !this.lost
+        lostAudio.play()
+      }
+      if (this.lost === true) {
         this.count = 1;
         this.spareCount = this.count
         this.playerSteps = [];
         this.compSteps = [];
-        lostAudio.play()
       }
     }
   }
 }
+
 </script>
 
